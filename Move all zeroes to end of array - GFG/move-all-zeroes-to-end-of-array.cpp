@@ -12,8 +12,6 @@ public:
         while(i<n){
             if(arr[i]!= 0 && arr[k]!=0){
                 i++;k++;
-            }else if(arr[k] == 0&& arr[i] == 0){
-                i++;
             }else if(arr[i] != 0 && arr[k] == 0){
                 swap(arr[i],arr[k]);
                 i++;k++;
