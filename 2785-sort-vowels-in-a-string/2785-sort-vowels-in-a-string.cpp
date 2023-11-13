@@ -1,32 +1,26 @@
-class Solution
-{
-    public:
-        string sortVowels(string s)
-        {
-            int n = s.size();
-            string vo = "";
-            for (auto c: s)
-            {
-                if (isVowel(c))
-                {
-                    vo += c;
-                }
-            }
-            sort(vo.begin(), vo.end());
-
-            for (int i = 0, j = 0; i < n; i++)
-            {
-                if (isVowel(s[i]))
-                {
-                    s[i] = vo[j++];
-                }
-            }
-            return s;
+class Solution {
+public:
+     bool isVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'o'|| c == 'u'|| c == 'i' 
+            || c == 'A' || c == 'E' || c == 'O'|| c == 'U'|| c == 'I';
+    }
+    string sortVowels(string s) {
+        unordered_map<char,int> mapp;
+        string sortedVowel = "AEIOUaeiou";
+        int j = 0;
+        string ans = "";
+        for(auto c:s){
+            mapp[c]++;
         }
-    bool isVowel(char c)
-    {
-        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') return true;
-
-        return false;
+        for(int i=0;i<s.size();i++){
+            if(isVowel(s[i])){
+                while(mapp[sortedVowel[j]] == 0) j++;
+                ans+= sortedVowel[j];
+                mapp[sortedVowel[j]]--;
+            }else{
+               ans+=s[i]; 
+            }
+        }
+        return ans;
     }
 };
