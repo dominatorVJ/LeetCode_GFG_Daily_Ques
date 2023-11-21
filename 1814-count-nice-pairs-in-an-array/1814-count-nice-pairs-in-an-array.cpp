@@ -18,8 +18,12 @@ public:
     }
     
     int rev(int num) {
-        string s = to_string(num);
-        reverse(s.begin(),s.end());
-        return stoi(s);
+        int result = 0;
+        while (num > 0) {
+            result = result * 10 + num % 10;
+            num /= 10;
+        }
+        
+        return result;
     }
 };
