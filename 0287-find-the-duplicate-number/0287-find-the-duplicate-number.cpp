@@ -3,26 +3,17 @@ class Solution
     public:
         int findDuplicate(vector<int> &nums)
         {
-           int i = 0, n = nums.size();
-            while (i < n)
+            int ans = -1;
+            for (int i = 0; i < nums.size(); i++)
             {
-                int cidx = nums[i] - 1;
-                if (nums[i] != nums[cidx])
+                int index = abs(nums[i]);
+                if (nums[index] < 0)
                 {
-                    swap(nums[i], nums[cidx]);
+                    ans = index;
+                    break;
                 }
-                else
-                {
-                    i++;
-                }
+                nums[index] *= -1;
             }
-            for (int i = 0; i < n; i++)
-            {
-                if (nums[i] != i + 1)
-                {
-                    return nums[i];
-                }
-            }
-            return -1;
+            return ans;
         }
 };
