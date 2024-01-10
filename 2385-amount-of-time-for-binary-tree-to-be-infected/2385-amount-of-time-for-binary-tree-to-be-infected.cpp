@@ -23,9 +23,9 @@ void createGraph(TreeNode* root){
             v[parent].push_back(node->val);
             v[node->val].push_back(parent);
         }
-        
-        if(node->right) q.push({node->right,node->val});
         if(node->left)  q.push({node->left,node->val});
+        if(node->right) q.push({node->right,node->val});
+        
     }   
 }
 
